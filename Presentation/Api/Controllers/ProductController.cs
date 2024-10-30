@@ -1,4 +1,5 @@
 ﻿using Application.Features.Products.Command.CreateProduct;
+using Application.Features.Products.Command.DeleteProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,7 @@ namespace Api.Controllers
         {
             this.mediator = mediator;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAllProdcuts()
         {
@@ -24,6 +26,13 @@ namespace Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateProdcut(CreateProductCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> SoftDeleteProdcut(DeleteProductCommandRequest request)
         {
             await mediator.Send(request);
             return Ok();
