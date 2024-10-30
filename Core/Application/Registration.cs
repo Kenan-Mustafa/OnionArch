@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Application
         public static void AddApplication(this IServiceCollection service)
         {
             var assembly = Assembly.GetExecutingAssembly();
+            service.AddTransient<ExceptionMiddleware>();
             service.AddMediatR(x=>x.RegisterServicesFromAssembly(assembly));
         }
     }
