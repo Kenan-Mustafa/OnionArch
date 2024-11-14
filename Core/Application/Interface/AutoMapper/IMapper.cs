@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interface.AutoMapper
-{
-    public interface IMapper
-    {
-        TDestination Map<TDestination,TSource>(TSource source , string? ignore = null); 
-        IList<TDestination> Map<TDestination,TSource>(IList<TSource> source , string? ignore = null);
+namespace Application.Interface.AutoMapper;
 
-        TDestination Map<TDestination>(object source, string? ignore = null);
-        IList<TDestination> Map<TDestination>(IList<object> source, string? ignore = null);
-    }
+public interface IMapper
+{
+    TDestination Map<TDestination,TSource>(TSource source , string? ignore = null); 
+    IList<TDestination> Map<TDestination,TSource>(IList<TSource> source , string? ignore = null);
+
+    TDestination Map<TDestination>(object source, string? ignore = null);
+    IList<TDestination> Map<TDestination>(IList<object> source, string? ignore = null);
 }

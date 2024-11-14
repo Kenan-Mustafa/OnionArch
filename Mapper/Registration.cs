@@ -7,13 +7,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mapper
+namespace Mapper;
+
+public static class Registration
 {
-    public static class Registration
+    public static void AddCustomMapper(this IServiceCollection service)
     {
-        public static void AddCustomMapper(this IServiceCollection service)
-        {
-            service.AddSingleton<IMapper, AutoMapper.Mapper>();
-        }
+        service.AddSingleton<IMapper, AutoMapper.Mapper>();
     }
 }
